@@ -1,0 +1,454 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+<mapper namespace="com.demo.auth.dao.OcrRecordDao">
+    <resultMap type="com.demo.auth.entity.OcrRecord" id="BaseResultMap">
+        <result property="ocrRecordId" column="ocrRecordId"/>
+        <result property="equipmentId" column="equipmentId"/>
+        <result property="hardCode" column="hardCode"/>
+        <result property="berthId" column="berthId"/>
+        <result property="berthCode" column="berthCode"/>
+        <result property="parkId" column="parkId"/>
+        <result property="parkCode" column="parkCode"/>
+        <result property="plateNumber" column="plateNumber"/>
+        <result property="carId" column="carId"/>
+        <result property="lastCarId" column="lastCarId"/>
+        <result property="captureTime" column="captureTime"/>
+        <result property="type" column="type"/>
+        <result property="carType" column="carType"/>
+        <result property="plateColor" column="plateColor"/>
+        <result property="dataSource" column="dataSource"/>
+        <result property="oprNum" column="oprNum"/>
+        <result property="entryOprNum" column="entryOprNum"/>
+        <result property="lastBerthCode" column="lastBerthCode"/>
+        <result property="lastPlateNumber" column="lastPlateNumber"/>
+        <result property="lastType" column="lastType"/>
+        <result property="eventReliability" column="eventReliability"/>
+        <result property="plateReliability" column="plateReliability"/>
+        <result property="width" column="width"/>
+        <result property="height" column="height"/>
+        <result property="xAxis" column="xAxis"/>
+        <result property="yAxis" column="yAxis"/>
+        <result property="pdaManagerId" column="pdaManagerId"/>
+        <result property="createdTime" column="createdTime"/>
+        <result property="updatedTime" column="updatedTime"/>
+        <result property="dataSourceDetail" column="dataSourceDetail"/>
+        <result property="dataVersion" column="dataVersion"/>
+    </resultMap>
+    
+    <sql id="Base_Column_List">
+      ocrRecordId, equipmentId, hardCode, berthId, berthCode, parkId, parkCode, plateNumber, carId, lastCarId, captureTime, type, carType, plateColor, dataSource, oprNum, entryOprNum, lastBerthCode, lastPlateNumber, lastType, eventReliability, plateReliability, width, height, xAxis, yAxis, pdaManagerId, createdTime, updatedTime, dataSourceDetail, dataVersion
+    </sql>
+
+    <!--查询单个-->
+    <select id="selectByPrimaryKey" parameterType="java.lang.Long" resultMap="BaseResultMap">
+        select
+          <include refid="Base_Column_List" />
+        from t_ocr_record
+        where ocrRecordId = #{ocrRecordId}
+    </select>
+
+    <!--新增所有列-->
+    <insert id="insertSelective" parameterType="com.demo.auth.entity.OcrRecord">
+        insert into t_ocr_record
+        <trim prefix="(" suffix=")" suffixOverrides=",">
+            <if test="ocrRecordId != null">
+            ocrRecordId,
+            </if>
+            <if test="equipmentId != null">
+            equipmentId,
+            </if>
+            <if test="hardCode != null and hardCode != ''">
+            hardCode,
+            </if>
+            <if test="berthId != null">
+            berthId,
+            </if>
+            <if test="berthCode != null and berthCode != ''">
+            berthCode,
+            </if>
+            <if test="parkId != null">
+            parkId,
+            </if>
+            <if test="parkCode != null and parkCode != ''">
+            parkCode,
+            </if>
+            <if test="plateNumber != null and plateNumber != ''">
+            plateNumber,
+            </if>
+            <if test="carId != null">
+            carId,
+            </if>
+            <if test="lastCarId != null">
+            lastCarId,
+            </if>
+            <if test="captureTime != null">
+            captureTime,
+            </if>
+            <if test="type != null">
+            type,
+            </if>
+            <if test="carType != null">
+            carType,
+            </if>
+            <if test="plateColor != null">
+            plateColor,
+            </if>
+            <if test="dataSource != null">
+            dataSource,
+            </if>
+            <if test="oprNum != null and oprNum != ''">
+            oprNum,
+            </if>
+            <if test="entryOprNum != null and entryOprNum != ''">
+            entryOprNum,
+            </if>
+            <if test="lastBerthCode != null and lastBerthCode != ''">
+            lastBerthCode,
+            </if>
+            <if test="lastPlateNumber != null and lastPlateNumber != ''">
+            lastPlateNumber,
+            </if>
+            <if test="lastType != null">
+            lastType,
+            </if>
+            <if test="eventReliability != null">
+            eventReliability,
+            </if>
+            <if test="plateReliability != null">
+            plateReliability,
+            </if>
+            <if test="width != null">
+            width,
+            </if>
+            <if test="height != null">
+            height,
+            </if>
+            <if test="xAxis != null">
+            xAxis,
+            </if>
+            <if test="yAxis != null">
+            yAxis,
+            </if>
+            <if test="pdaManagerId != null">
+            pdaManagerId,
+            </if>
+            <if test="createdTime != null">
+            createdTime,
+            </if>
+            <if test="updatedTime != null">
+            updatedTime,
+            </if>
+            <if test="dataSourceDetail != null">
+            dataSourceDetail,
+            </if>
+            <if test="dataVersion != null">
+            dataVersion,
+            </if>
+        </trim>
+        <trim prefix="values (" suffix=")" suffixOverrides=",">
+            <if test="ocrRecordId != null">
+            #{ocrRecordId},
+            </if>
+            <if test="equipmentId != null">
+            #{equipmentId},
+            </if>
+            <if test="hardCode != null and hardCode != ''">
+            #{hardCode},
+            </if>
+            <if test="berthId != null">
+            #{berthId},
+            </if>
+            <if test="berthCode != null and berthCode != ''">
+            #{berthCode},
+            </if>
+            <if test="parkId != null">
+            #{parkId},
+            </if>
+            <if test="parkCode != null and parkCode != ''">
+            #{parkCode},
+            </if>
+            <if test="plateNumber != null and plateNumber != ''">
+            #{plateNumber},
+            </if>
+            <if test="carId != null">
+            #{carId},
+            </if>
+            <if test="lastCarId != null">
+            #{lastCarId},
+            </if>
+            <if test="captureTime != null">
+            #{captureTime},
+            </if>
+            <if test="type != null">
+            #{type},
+            </if>
+            <if test="carType != null">
+            #{carType},
+            </if>
+            <if test="plateColor != null">
+            #{plateColor},
+            </if>
+            <if test="dataSource != null">
+            #{dataSource},
+            </if>
+            <if test="oprNum != null and oprNum != ''">
+            #{oprNum},
+            </if>
+            <if test="entryOprNum != null and entryOprNum != ''">
+            #{entryOprNum},
+            </if>
+            <if test="lastBerthCode != null and lastBerthCode != ''">
+            #{lastBerthCode},
+            </if>
+            <if test="lastPlateNumber != null and lastPlateNumber != ''">
+            #{lastPlateNumber},
+            </if>
+            <if test="lastType != null">
+            #{lastType},
+            </if>
+            <if test="eventReliability != null">
+            #{eventReliability},
+            </if>
+            <if test="plateReliability != null">
+            #{plateReliability},
+            </if>
+            <if test="width != null">
+            #{width},
+            </if>
+            <if test="height != null">
+            #{height},
+            </if>
+            <if test="xAxis != null">
+            #{xAxis},
+            </if>
+            <if test="yAxis != null">
+            #{yAxis},
+            </if>
+            <if test="pdaManagerId != null">
+            #{pdaManagerId},
+            </if>
+            <if test="createdTime != null">
+            #{createdTime},
+            </if>
+            <if test="updatedTime != null">
+            #{updatedTime},
+            </if>
+            <if test="dataSourceDetail != null">
+            #{dataSourceDetail},
+            </if>
+            <if test="dataVersion != null">
+            #{dataVersion},
+            </if>
+        </trim>
+    </insert>
+
+    <!--通过主键修改数据-->
+    <update id="updateByPrimaryKeySelective" parameterType="com.demo.auth.entity.OcrRecord">
+        update t_ocr_record
+        <set>
+            <if test="equipmentId != null">
+                equipmentId = #{equipmentId},
+            </if>
+            <if test="hardCode != null and hardCode != ''">
+                hardCode = #{hardCode},
+            </if>
+            <if test="berthId != null">
+                berthId = #{berthId},
+            </if>
+            <if test="berthCode != null and berthCode != ''">
+                berthCode = #{berthCode},
+            </if>
+            <if test="parkId != null">
+                parkId = #{parkId},
+            </if>
+            <if test="parkCode != null and parkCode != ''">
+                parkCode = #{parkCode},
+            </if>
+            <if test="plateNumber != null and plateNumber != ''">
+                plateNumber = #{plateNumber},
+            </if>
+            <if test="carId != null">
+                carId = #{carId},
+            </if>
+            <if test="lastCarId != null">
+                lastCarId = #{lastCarId},
+            </if>
+            <if test="captureTime != null">
+                captureTime = #{captureTime},
+            </if>
+            <if test="type != null">
+                type = #{type},
+            </if>
+            <if test="carType != null">
+                carType = #{carType},
+            </if>
+            <if test="plateColor != null">
+                plateColor = #{plateColor},
+            </if>
+            <if test="dataSource != null">
+                dataSource = #{dataSource},
+            </if>
+            <if test="oprNum != null and oprNum != ''">
+                oprNum = #{oprNum},
+            </if>
+            <if test="entryOprNum != null and entryOprNum != ''">
+                entryOprNum = #{entryOprNum},
+            </if>
+            <if test="lastBerthCode != null and lastBerthCode != ''">
+                lastBerthCode = #{lastBerthCode},
+            </if>
+            <if test="lastPlateNumber != null and lastPlateNumber != ''">
+                lastPlateNumber = #{lastPlateNumber},
+            </if>
+            <if test="lastType != null">
+                lastType = #{lastType},
+            </if>
+            <if test="eventReliability != null">
+                eventReliability = #{eventReliability},
+            </if>
+            <if test="plateReliability != null">
+                plateReliability = #{plateReliability},
+            </if>
+            <if test="width != null">
+                width = #{width},
+            </if>
+            <if test="height != null">
+                height = #{height},
+            </if>
+            <if test="xAxis != null">
+                xAxis = #{xAxis},
+            </if>
+            <if test="yAxis != null">
+                yAxis = #{yAxis},
+            </if>
+            <if test="pdaManagerId != null">
+                pdaManagerId = #{pdaManagerId},
+            </if>
+            <if test="createdTime != null">
+                createdTime = #{createdTime},
+            </if>
+            <if test="updatedTime != null">
+                updatedTime = #{updatedTime},
+            </if>
+            <if test="dataSourceDetail != null">
+                dataSourceDetail = #{dataSourceDetail},
+            </if>
+            <if test="dataVersion != null">
+                dataVersion = #{dataVersion},
+            </if>
+        </set>
+        where ocrRecordId = #{ocrRecordId}
+    </update>
+    
+    <!--条件查询-->
+    <select id="listByCondition" resultMap="BaseResultMap">
+        select
+            <include refid="Base_Column_List" />
+        from t_ocr_record
+        <where>
+            <if test="ocrRecordId != null">
+                and ocrRecordId = #{ocrRecordId}
+            </if>
+            <if test="equipmentId != null">
+                and equipmentId = #{equipmentId}
+            </if>
+            <if test="hardCode != null and hardCode != ''">
+                and hardCode = #{hardCode}
+            </if>
+            <if test="berthId != null">
+                and berthId = #{berthId}
+            </if>
+            <if test="berthCode != null and berthCode != ''">
+                and berthCode = #{berthCode}
+            </if>
+            <if test="parkId != null">
+                and parkId = #{parkId}
+            </if>
+            <if test="parkCode != null and parkCode != ''">
+                and parkCode = #{parkCode}
+            </if>
+            <if test="plateNumber != null and plateNumber != ''">
+                and plateNumber = #{plateNumber}
+            </if>
+            <if test="carId != null">
+                and carId = #{carId}
+            </if>
+            <if test="lastCarId != null">
+                and lastCarId = #{lastCarId}
+            </if>
+            <if test="captureTime != null">
+                and captureTime = #{captureTime}
+            </if>
+            <if test="startTime != null and endTime != null">
+                and captureTime between #{startTime} and #{endTime}
+            </if>
+            <if test="type != null">
+                and type = #{type}
+            </if>
+            <if test="carType != null">
+                and carType = #{carType}
+            </if>
+            <if test="plateColor != null">
+                and plateColor = #{plateColor}
+            </if>
+            <if test="dataSource != null">
+                and dataSource = #{dataSource}
+            </if>
+            <if test="oprNum != null and oprNum != ''">
+                and oprNum = #{oprNum}
+            </if>
+            <if test="entryOprNum != null and entryOprNum != ''">
+                and entryOprNum = #{entryOprNum}
+            </if>
+            <if test="lastBerthCode != null and lastBerthCode != ''">
+                and lastBerthCode = #{lastBerthCode}
+            </if>
+            <if test="lastPlateNumber != null and lastPlateNumber != ''">
+                and lastPlateNumber = #{lastPlateNumber}
+            </if>
+            <if test="lastType != null">
+                and lastType = #{lastType}
+            </if>
+            <if test="eventReliability != null">
+                and eventReliability = #{eventReliability}
+            </if>
+            <if test="plateReliability != null">
+                and plateReliability = #{plateReliability}
+            </if>
+            <if test="width != null">
+                and width = #{width}
+            </if>
+            <if test="height != null">
+                and height = #{height}
+            </if>
+            <if test="xAxis != null">
+                and xAxis = #{xAxis}
+            </if>
+            <if test="yAxis != null">
+                and yAxis = #{yAxis}
+            </if>
+            <if test="pdaManagerId != null">
+                and pdaManagerId = #{pdaManagerId}
+            </if>
+            <if test="createdTime != null">
+                and createdTime = #{createdTime}
+            </if>
+            <if test="updatedTime != null">
+                and updatedTime = #{updatedTime}
+            </if>
+            <if test="dataSourceDetail != null">
+                and dataSourceDetail = #{dataSourceDetail}
+            </if>
+            <if test="dataVersion != null">
+                and dataVersion = #{dataVersion}
+            </if>
+        </where>
+    </select>
+
+    <delete id="delete" parameterType="java.util.List">
+        delete from t_ocr_record where dataSource=99 and ocrRecordId in
+        <foreach collection="idList" separator="," item="item" open="(" close=")">
+            #{item}
+        </foreach>
+    </delete>
+</mapper>

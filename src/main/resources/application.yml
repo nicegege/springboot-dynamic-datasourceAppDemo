@@ -1,0 +1,23 @@
+server:
+  port: 8081
+
+spring:
+  profiles:
+    active: dev
+
+mybatis:
+  #扫描Mapper接口对应的XML文件
+  mapper-locations: "classpath:mapper/*.xml"
+  #使用mybatis.type-aliases-package来指定POJO扫描包来让mybatis自动扫描到自定义的POJO。
+  type-aliases-package: com.demo.autho.entity
+    #如果查询语句中某些字段值是null的，则这个字段就无法返回。对于后台数据处理来说，这是一个致命的问题，于是通过修改Mybatis的配置来解决这个问题。返回一个null的值
+  configuration:
+    call-setters-on-nulls: true
+
+#showSql
+logging:
+  level:
+    com:
+      demo:
+        auth:
+          mapper : debug

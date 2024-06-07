@@ -1,0 +1,232 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+<mapper namespace="com.demo.auth.dao.WechatDao">
+    <resultMap type="com.demo.auth.entity.Wechat" id="BaseResultMap">
+        <result property="updatedTime" column="updatedTime"/>
+        <result property="memberId" column="memberId"/>
+        <result property="caller" column="caller"/>
+        <result property="operatorId" column="operatorId"/>
+        <result property="resultCode" column="resultCode"/>
+        <result property="createdTime" column="createdTime"/>
+        <result property="wechatState" column="wechatState"/>
+        <result property="msgType" column="msgType"/>
+        <result property="tmplCode" column="tmplCode"/>
+        <result property="content" column="content"/>
+        <result property="wechatMsgType" column="wechatMsgType"/>
+        <result property="openId" column="openId"/>
+        <result property="taskId" column="taskId"/>
+        <result property="id" column="id"/>
+    </resultMap>
+    
+    <sql id="Base_Column_List">
+      updatedTime, memberId, caller, operatorId, resultCode, createdTime, wechatState, msgType, tmplCode, content, wechatMsgType, openId, taskId, id
+    </sql>
+
+    <!--查询单个-->
+    <select id="selectByPrimaryKey" parameterType="java.lang.Long" resultMap="BaseResultMap">
+        select
+          <include refid="Base_Column_List" />
+        from t_wechat
+        where id = #{id}
+    </select>
+
+    <!--新增所有列-->
+    <insert id="insertSelective" parameterType="com.demo.auth.entity.Wechat">
+        insert into t_wechat
+        <trim prefix="(" suffix=")" suffixOverrides=",">
+            <if test="updatedTime != null">
+            updatedTime,
+            </if>
+            <if test="memberId != null">
+            memberId,
+            </if>
+            <if test="caller != null and caller != ''">
+            caller,
+            </if>
+            <if test="operatorId != null">
+            operatorId,
+            </if>
+            <if test="resultCode != null and resultCode != ''">
+            resultCode,
+            </if>
+            <if test="createdTime != null">
+            createdTime,
+            </if>
+            <if test="wechatState != null">
+            wechatState,
+            </if>
+            <if test="msgType != null">
+            msgType,
+            </if>
+            <if test="tmplCode != null">
+            tmplCode,
+            </if>
+            <if test="content != null and content != ''">
+            content,
+            </if>
+            <if test="wechatMsgType != null and wechatMsgType != ''">
+            wechatMsgType,
+            </if>
+            <if test="openId != null and openId != ''">
+            openId,
+            </if>
+            <if test="taskId != null">
+            taskId,
+            </if>
+            <if test="id != null">
+            id,
+            </if>
+        </trim>
+        <trim prefix="values (" suffix=")" suffixOverrides=",">
+            <if test="updatedTime != null">
+            #{updatedTime},
+            </if>
+            <if test="memberId != null">
+            #{memberId},
+            </if>
+            <if test="caller != null and caller != ''">
+            #{caller},
+            </if>
+            <if test="operatorId != null">
+            #{operatorId},
+            </if>
+            <if test="resultCode != null and resultCode != ''">
+            #{resultCode},
+            </if>
+            <if test="createdTime != null">
+            #{createdTime},
+            </if>
+            <if test="wechatState != null">
+            #{wechatState},
+            </if>
+            <if test="msgType != null">
+            #{msgType},
+            </if>
+            <if test="tmplCode != null">
+            #{tmplCode},
+            </if>
+            <if test="content != null and content != ''">
+            #{content},
+            </if>
+            <if test="wechatMsgType != null and wechatMsgType != ''">
+            #{wechatMsgType},
+            </if>
+            <if test="openId != null and openId != ''">
+            #{openId},
+            </if>
+            <if test="taskId != null">
+            #{taskId},
+            </if>
+            <if test="id != null">
+            #{id},
+            </if>
+        </trim>
+    </insert>
+
+    <!--通过主键修改数据-->
+    <update id="updateByPrimaryKeySelective" parameterType="com.demo.auth.entity.Wechat">
+        update t_wechat
+        <set>
+            <if test="updatedTime != null">
+                updatedTime = #{updatedTime},
+            </if>
+            <if test="memberId != null">
+                memberId = #{memberId},
+            </if>
+            <if test="caller != null and caller != ''">
+                caller = #{caller},
+            </if>
+            <if test="operatorId != null">
+                operatorId = #{operatorId},
+            </if>
+            <if test="resultCode != null and resultCode != ''">
+                resultCode = #{resultCode},
+            </if>
+            <if test="createdTime != null">
+                createdTime = #{createdTime},
+            </if>
+            <if test="wechatState != null">
+                wechatState = #{wechatState},
+            </if>
+            <if test="msgType != null">
+                msgType = #{msgType},
+            </if>
+            <if test="tmplCode != null">
+                tmplCode = #{tmplCode},
+            </if>
+            <if test="content != null and content != ''">
+                content = #{content},
+            </if>
+            <if test="wechatMsgType != null and wechatMsgType != ''">
+                wechatMsgType = #{wechatMsgType},
+            </if>
+            <if test="openId != null and openId != ''">
+                openId = #{openId},
+            </if>
+            <if test="taskId != null">
+                taskId = #{taskId},
+            </if>
+        </set>
+        where id = #{id}
+    </update>
+    
+    <!--条件查询-->
+    <select id="listByCondition" resultMap="BaseResultMap">
+        select
+            <include refid="Base_Column_List" />
+        from t_wechat
+        <where>
+            <if test="updatedTime != null">
+                and updatedTime = #{updatedTime}
+            </if>
+            <if test="memberId != null">
+                and memberId = #{memberId}
+            </if>
+            <if test="caller != null and caller != ''">
+                and caller = #{caller}
+            </if>
+            <if test="operatorId != null">
+                and operatorId = #{operatorId}
+            </if>
+            <if test="resultCode != null and resultCode != ''">
+                and resultCode = #{resultCode}
+            </if>
+            <if test="createdTime != null">
+                and createdTime = #{createdTime}
+            </if>
+            <if test="wechatState != null">
+                and wechatState = #{wechatState}
+            </if>
+            <if test="msgType != null">
+                and msgType = #{msgType}
+            </if>
+            <if test="tmplCode != null">
+                and tmplCode = #{tmplCode}
+            </if>
+            <if test="content != null and content != ''">
+                and content = #{content}
+            </if>
+            <if test="wechatMsgType != null and wechatMsgType != ''">
+                and wechatMsgType = #{wechatMsgType}
+            </if>
+            <if test="openId != null and openId != ''">
+                and openId = #{openId}
+            </if>
+            <if test="taskId != null">
+                and taskId = #{taskId}
+            </if>
+            <if test="id != null">
+                and id = #{id}
+            </if>
+            <if test="startTime != null and endTime != null">
+                and createdTime between #{startTime} and #{endTime}
+            </if>
+        </where>
+    </select>
+    <delete id="delete" parameterType="java.util.List">
+        delete from t_wechat where id in
+        <foreach collection="idList" separator="," item="item" open="(" close=")">
+            #{item}
+        </foreach>
+    </delete>
+</mapper>

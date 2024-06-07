@@ -1,0 +1,363 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+<mapper namespace="com.demo.auth.dao.ParkRecordDao">
+    <resultMap type="com.demo.auth.entity.ParkRecord" id="BaseResultMap">
+        <result property="parkId" column="parkId"/>
+        <result property="illegal" column="illegal"/>
+        <result property="carId" column="carId"/>
+        <result property="berthId" column="berthId"/>
+        <result property="berthCode" column="berthCode"/>
+        <result property="dataVersion" column="dataVersion"/>
+        <result property="entryTime" column="entryTime"/>
+        <result property="exitTime" column="exitTime"/>
+        <result property="exception" column="exception"/>
+        <result property="display" column="display"/>
+        <result property="updatedTime" column="updatedTime"/>
+        <result property="createdTime" column="createdTime"/>
+        <result property="parkCode" column="parkCode"/>
+        <result property="plateNumber" column="plateNumber"/>
+        <result property="parkRecordId" column="parkRecordId"/>
+        <result property="recordCode" column="recordCode"/>
+        <result property="recordState" column="recordState"/>
+        <result property="hardCode" column="hardCode"/>
+        <result property="entryId" column="entryId"/>
+        <result property="entryOprNum" column="entryOprNum"/>
+        <result property="exitId" column="exitId"/>
+        <result property="exitOprNum" column="exitOprNum"/>
+        <result property="exitDataSource" column="exitDataSource"/>
+        <result property="entryDataSource" column="entryDataSource"/>
+    </resultMap>
+    
+    <sql id="Base_Column_List">
+      parkId, illegal, carId, berthId, berthCode, dataVersion, entryTime, exitTime, exception, display, updatedTime, createdTime, parkCode, plateNumber, parkRecordId, recordCode, recordState, hardCode, entryId, entryOprNum, exitId, exitOprNum, exitDataSource, entryDataSource
+    </sql>
+
+    <!--查询单个-->
+    <select id="selectByPrimaryKey" parameterType="java.lang.Long" resultMap="BaseResultMap">
+        select
+          <include refid="Base_Column_List" />
+        from t_park_record
+        where parkRecordId = #{parkRecordId}
+    </select>
+
+    <!--新增所有列-->
+    <insert id="insertSelective" parameterType="com.demo.auth.entity.ParkRecord">
+        insert into t_park_record
+        <trim prefix="(" suffix=")" suffixOverrides=",">
+            <if test="parkId != null">
+            parkId,
+            </if>
+            <if test="illegal != null">
+            illegal,
+            </if>
+            <if test="carId != null">
+            carId,
+            </if>
+            <if test="berthId != null">
+            berthId,
+            </if>
+            <if test="berthCode != null and berthCode != ''">
+            berthCode,
+            </if>
+            <if test="dataVersion != null">
+            dataVersion,
+            </if>
+            <if test="entryTime != null">
+            entryTime,
+            </if>
+            <if test="exitTime != null">
+            exitTime,
+            </if>
+            <if test="exception != null">
+            exception,
+            </if>
+            <if test="display != null">
+            display,
+            </if>
+            <if test="updatedTime != null">
+            updatedTime,
+            </if>
+            <if test="createdTime != null">
+            createdTime,
+            </if>
+            <if test="parkCode != null and parkCode != ''">
+            parkCode,
+            </if>
+            <if test="plateNumber != null and plateNumber != ''">
+            plateNumber,
+            </if>
+            <if test="parkRecordId != null">
+            parkRecordId,
+            </if>
+            <if test="recordCode != null and recordCode != ''">
+            recordCode,
+            </if>
+            <if test="recordState != null">
+            recordState,
+            </if>
+            <if test="hardCode != null and hardCode != ''">
+            hardCode,
+            </if>
+            <if test="entryId != null">
+            entryId,
+            </if>
+            <if test="entryOprNum != null and entryOprNum != ''">
+            entryOprNum,
+            </if>
+            <if test="exitId != null">
+            exitId,
+            </if>
+            <if test="exitOprNum != null and exitOprNum != ''">
+            exitOprNum,
+            </if>
+            <if test="exitDataSource != null">
+            exitDataSource,
+            </if>
+            <if test="entryDataSource != null">
+            entryDataSource,
+            </if>
+        </trim>
+        <trim prefix="values (" suffix=")" suffixOverrides=",">
+            <if test="parkId != null">
+            #{parkId},
+            </if>
+            <if test="illegal != null">
+            #{illegal},
+            </if>
+            <if test="carId != null">
+            #{carId},
+            </if>
+            <if test="berthId != null">
+            #{berthId},
+            </if>
+            <if test="berthCode != null and berthCode != ''">
+            #{berthCode},
+            </if>
+            <if test="dataVersion != null">
+            #{dataVersion},
+            </if>
+            <if test="entryTime != null">
+            #{entryTime},
+            </if>
+            <if test="exitTime != null">
+            #{exitTime},
+            </if>
+            <if test="exception != null">
+            #{exception},
+            </if>
+            <if test="display != null">
+            #{display},
+            </if>
+            <if test="updatedTime != null">
+            #{updatedTime},
+            </if>
+            <if test="createdTime != null">
+            #{createdTime},
+            </if>
+            <if test="parkCode != null and parkCode != ''">
+            #{parkCode},
+            </if>
+            <if test="plateNumber != null and plateNumber != ''">
+            #{plateNumber},
+            </if>
+            <if test="parkRecordId != null">
+            #{parkRecordId},
+            </if>
+            <if test="recordCode != null and recordCode != ''">
+            #{recordCode},
+            </if>
+            <if test="recordState != null">
+            #{recordState},
+            </if>
+            <if test="hardCode != null and hardCode != ''">
+            #{hardCode},
+            </if>
+            <if test="entryId != null">
+            #{entryId},
+            </if>
+            <if test="entryOprNum != null and entryOprNum != ''">
+            #{entryOprNum},
+            </if>
+            <if test="exitId != null">
+            #{exitId},
+            </if>
+            <if test="exitOprNum != null and exitOprNum != ''">
+            #{exitOprNum},
+            </if>
+            <if test="exitDataSource != null">
+            #{exitDataSource},
+            </if>
+            <if test="entryDataSource != null">
+            #{entryDataSource},
+            </if>
+        </trim>
+    </insert>
+
+    <!--通过主键修改数据-->
+    <update id="updateByPrimaryKeySelective" parameterType="com.demo.auth.entity.ParkRecord">
+        update t_park_record
+        <set>
+            <if test="parkId != null">
+                parkId = #{parkId},
+            </if>
+            <if test="illegal != null">
+                illegal = #{illegal},
+            </if>
+            <if test="carId != null">
+                carId = #{carId},
+            </if>
+            <if test="berthId != null">
+                berthId = #{berthId},
+            </if>
+            <if test="berthCode != null and berthCode != ''">
+                berthCode = #{berthCode},
+            </if>
+            <if test="dataVersion != null">
+                dataVersion = #{dataVersion},
+            </if>
+            <if test="entryTime != null">
+                entryTime = #{entryTime},
+            </if>
+            <if test="exitTime != null">
+                exitTime = #{exitTime},
+            </if>
+            <if test="exception != null">
+                exception = #{exception},
+            </if>
+            <if test="display != null">
+                display = #{display},
+            </if>
+            <if test="updatedTime != null">
+                updatedTime = #{updatedTime},
+            </if>
+            <if test="createdTime != null">
+                createdTime = #{createdTime},
+            </if>
+            <if test="parkCode != null and parkCode != ''">
+                parkCode = #{parkCode},
+            </if>
+            <if test="plateNumber != null and plateNumber != ''">
+                plateNumber = #{plateNumber},
+            </if>
+            <if test="recordCode != null and recordCode != ''">
+                recordCode = #{recordCode},
+            </if>
+            <if test="recordState != null">
+                recordState = #{recordState},
+            </if>
+            <if test="hardCode != null and hardCode != ''">
+                hardCode = #{hardCode},
+            </if>
+            <if test="entryId != null">
+                entryId = #{entryId},
+            </if>
+            <if test="entryOprNum != null and entryOprNum != ''">
+                entryOprNum = #{entryOprNum},
+            </if>
+            <if test="exitId != null">
+                exitId = #{exitId},
+            </if>
+            <if test="exitOprNum != null and exitOprNum != ''">
+                exitOprNum = #{exitOprNum},
+            </if>
+            <if test="exitDataSource != null">
+                exitDataSource = #{exitDataSource},
+            </if>
+            <if test="entryDataSource != null">
+                entryDataSource = #{entryDataSource},
+            </if>
+        </set>
+        where parkRecordId = #{parkRecordId}
+    </update>
+    
+    <!--条件查询-->
+    <select id="listByCondition" resultMap="BaseResultMap">
+        select
+            <include refid="Base_Column_List" />
+        from t_park_record
+        <where>
+            <if test="parkId != null">
+                and parkId = #{parkId}
+            </if>
+            <if test="illegal != null">
+                and illegal = #{illegal}
+            </if>
+            <if test="carId != null">
+                and carId = #{carId}
+            </if>
+            <if test="berthId != null">
+                and berthId = #{berthId}
+            </if>
+            <if test="berthCode != null and berthCode != ''">
+                and berthCode = #{berthCode}
+            </if>
+            <if test="dataVersion != null">
+                and dataVersion = #{dataVersion}
+            </if>
+            <if test="entryTime != null">
+                and entryTime = #{entryTime}
+            </if>
+            <if test="exitTime != null">
+                and exitTime = #{exitTime}
+            </if>
+            <if test="exception != null">
+                and exception = #{exception}
+            </if>
+            <if test="display != null">
+                and display = #{display}
+            </if>
+            <if test="updatedTime != null">
+                and updatedTime = #{updatedTime}
+            </if>
+            <if test="createdTime != null">
+                and createdTime = #{createdTime}
+            </if>
+            <if test="parkCode != null and parkCode != ''">
+                and parkCode = #{parkCode}
+            </if>
+            <if test="plateNumber != null and plateNumber != ''">
+                and plateNumber = #{plateNumber}
+            </if>
+            <if test="parkRecordId != null">
+                and parkRecordId = #{parkRecordId}
+            </if>
+            <if test="recordCode != null and recordCode != ''">
+                and recordCode = #{recordCode}
+            </if>
+            <if test="recordState != null">
+                and recordState = #{recordState}
+            </if>
+            <if test="hardCode != null and hardCode != ''">
+                and hardCode = #{hardCode}
+            </if>
+            <if test="entryId != null">
+                and entryId = #{entryId}
+            </if>
+            <if test="entryOprNum != null and entryOprNum != ''">
+                and entryOprNum = #{entryOprNum}
+            </if>
+            <if test="exitId != null">
+                and exitId = #{exitId}
+            </if>
+            <if test="exitOprNum != null and exitOprNum != ''">
+                and exitOprNum = #{exitOprNum}
+            </if>
+            <if test="exitDataSource != null">
+                and exitDataSource = #{exitDataSource}
+            </if>
+            <if test="entryDataSource != null">
+                and entryDataSource = #{entryDataSource}
+            </if>
+            <if test="startTime != null and endTime != null">
+                and entryTime between #{startTime} and #{endTime}
+            </if>
+        </where>
+    </select>
+
+    <delete id="delete" parameterType="java.util.List">
+        delete from t_park_record where entryDataSource=99 and parkRecordId in
+        <foreach collection="idList" separator="," item="item" open="(" close=")">
+            #{item}
+        </foreach>
+    </delete>
+</mapper>
